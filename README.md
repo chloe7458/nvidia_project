@@ -8,7 +8,7 @@ image canceled
 
 ## The Algorithm
 
-Add an explanation of the algorithm and how it works. Make sure to include details about how the code works, what it depends on, and any other relevant info. Add images or other descriptions for your project here. i do this later when i am not too lazy to walk over and plug in the nano (i am currently too lazy to walk over and plug in the nano) (it's 2 hours before the final class why am i still trying to make 1998 toontown dance mix in thirty dollar website) (do i even have priorities) (probably not) (technical issues kinda discouraging tbh) (rahhhhh line 186)
+Add an explanation of the algorithm and how it works. Make sure to include details about how the code works, what it depends on, and any other relevant info. Add images or other descriptions for your project here. i do this later when i am not too lazy to walk over and plug in the nano (i am currently too lazy to walk over and plug in the nano) (it's 2 hours before the final class why am i still trying to make 1998 toontown dance mix in thirty dollar website) (do i even have priorities) (probably not) (technical issues kinda discouraging tbh) (rahhhhh turns out it was actually line 196 oops)
 
 ## Running this project
 
