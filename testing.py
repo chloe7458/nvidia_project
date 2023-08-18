@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 
-# the contents of this file will be copied to duckImagenet.py (the main file) periodically as I work
-# this file will be removed when the project is complete
-# for now this file is for experimentation I think
-
 from jetson_inference import imageNet
 from jetson_utils import videoSource, videoOutput, cudaFont, Log
 
@@ -32,6 +28,9 @@ net = imageNet(args.network, sys.argv)
 # create video sources and outputs
 input = videoSource(args.input, argv=sys.argv)
 output = videoOutput(args.output, argv=sys.argv)
+
+
+# create fonts for overlay
 class_font = cudaFont(size=30)
 advice_font = cudaFont(size=15)
 
@@ -58,7 +57,7 @@ while True:
     class_list = ["beaver","duck","fish","frog","goose","heron","turtle"]
     advice_list = ["carrots, lettuce, other vegetables",
                     "corn, oats, rice, seeds",
-                    "algae, plants, worms and insects, other fish",
+                    "algae, plants, worms and insects, fish",
                     "worms and insects",
                     "grass, seeds, grain, fruits"
                     "squirrels, fish",

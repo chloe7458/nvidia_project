@@ -1,9 +1,5 @@
 #!/usr/bin/python3
 
-# this file will be periodically updated with additions made in testing.py
-# only this file will remain when the project is complete
-# for now this file is more of a backup I think
-
 from jetson_inference import imageNet
 from jetson_utils import videoSource, videoOutput, cudaFont, Log
 
@@ -32,8 +28,11 @@ net = imageNet(args.network, sys.argv)
 # create video sources and outputs
 input = videoSource(args.input, argv=sys.argv)
 output = videoOutput(args.output, argv=sys.argv)
+
+
+# create fonts for overlay
 class_font = cudaFont(size=30)
-advice_font = cudaFont(size=20)
+advice_font = cudaFont(size=15)
 
 
 # process frames until EOS or the user exits
@@ -55,11 +54,22 @@ while True:
     print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format(class_desc, class_id, confidence))
 
     # give advice
-    if class_desc.find("duck"):
-        class_label = "duck"
-        advice = "do NOT feed bread"
-    else:
-        advice = "i am thinking ..."
+    class_list = ["beaver","duck","fish","frog","goose","heron","turtle"]
+    advice_list = ["carrots, lettuce, other vegetables",
+                    "corn, oats, rice, seeds",
+                    "algae, plants, worms and insects, fish",
+                    "worms and insects",
+                    "grass, seeds, grain, fruits"
+                    "squirrels, fish",
+                    "fruits, worms and insects, fish"]
+
+    for index in range(len(class_list)-1):
+        class_name = class_list[index]
+
+        if class_label == class_name:
+            advice_label = advice_list[index]
+        else:
+            advice_label = ""
     
     # draw top class label
     class_font.OverlayText(img, text=f"{confidence:05.2f}% {class_label}", 
@@ -67,9 +77,10 @@ while True:
                      color=class_font.White, background=class_font.Gray40)
 
     # draw advice label
-    advice_font.OverlayText(img, text=str(advice), 
-                     x=5, y=35,
-                     color=advice_font.White, background=advice_font.Gray40)
+    if advice_label != "":
+        advice_font.OverlayText(img, text=str(advice), 
+                         x=5, y=35,
+                         color=advice_font.White, background=advice_font.Gray40)
 
     # render the image
     output.Render(img)
