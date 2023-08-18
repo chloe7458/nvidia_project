@@ -19,7 +19,7 @@ This project uses a resnet-18 model that is retrained to focus on different type
 5. ./docker/run.sh into jetson-inference/python/training/classification
 6. train.py parameter parameter parameter
 7. export onnx i forgot what the script was called and my ssh is not working so i can not see
-8. i actually don't know how to exit docker normally so either do it if you know how or be like me and open a new terminal to get out of docker
+8. type exit to exit the docker i guess
 9. go to home/nvidia/pond/ for lack of a better or more logical name
 10. python3 pond_imagenet.py {image file path} {file path for output}
 11. ignore how the model has like 30% accuracy 
