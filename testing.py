@@ -33,7 +33,7 @@ net = imageNet(args.network, sys.argv)
 input = videoSource(args.input, argv=sys.argv)
 output = videoOutput(args.output, argv=sys.argv)
 class_font = cudaFont(size=30)
-advice_font = cudaFont(size=20)
+advice_font = cudaFont(size=15)
 
 
 # process frames until EOS or the user exits
@@ -55,10 +55,23 @@ while True:
     print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format(class_desc, class_id, confidence))
 
     # give advice
-    if class_desc.find("beaver"):
-        class_label = "beaver"
-    else:
-        advice = "i am thinking ..."
+    class_list = ["beaver","duck","fish","frog","goose","heron","turtle"]
+    advice_list = ["carrots, lettuce, other vegetables",
+                    "corn, oats, rice, seeds",
+                    "algae, plants, worms and insects, other fish",
+                    "worms and insects",
+                    "grass, seeds, grain, fruits"
+                    "squirrels, fish",
+                    "fruits, worms and insects, fish"]
+
+    for index in range(len(class_list)-1):
+        class_name = class_list[index]
+
+        if class_label == class_name:
+            advice_label = advice_list[index]
+        else:
+            advice_label = ""
+
     
     # draw top class label
     class_font.OverlayText(img, text=f"{confidence:05.2f}% {class_label}", 
@@ -66,9 +79,10 @@ while True:
                      color=class_font.White, background=class_font.Gray40)
 
     # draw advice label
-    advice_font.OverlayText(img, text=str(advice), 
-                     x=5, y=35,
-                     color=advice_font.White, background=advice_font.Gray40)
+    if advice_label != "":
+        advice_font.OverlayText(img, text=advice_label, 
+                         x=5, y=35,
+                         color=advice_font.White, background=advice_font.Gray40)
 
     # render the image
     output.Render(img)

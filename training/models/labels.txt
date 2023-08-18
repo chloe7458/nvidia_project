@@ -1,7 +1,0 @@
-beaver
-duck
-fish
-frog
-goose
-heron
-turtle
