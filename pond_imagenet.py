@@ -9,8 +9,8 @@ import argparse
 
 # parse the command line
 parser = argparse.ArgumentParser()
-parser.add_argument("input", type=str, default="", nargs='?', help="URI of the input stream")
-parser.add_argument("output", type=str, default="", nargs='?', help="URI of the output stream")
+parser.add_argument("--input", type=str, default="", nargs='?', help="URI of the input stream")
+parser.add_argument("--output", type=str, default="", nargs='?', help="URI of the output stream")
 parser.add_argument("--network", type=str, default="googlenet", help="model to use, can be:  googlenet, resnet-18, ect. (see --help for others)")
 
 try:
