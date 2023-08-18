@@ -72,7 +72,6 @@ while True:
         else:
             advice_label = ""
 
-    
     # draw top class label
     class_font.OverlayText(img, text=f"{confidence:05.2f}% {class_label}", 
                      x=5, y=5,
