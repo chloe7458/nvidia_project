@@ -13,7 +13,6 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("input", type=str, default="", nargs='?', help="URI of the input stream")
 parser.add_argument("output", type=str, default="", nargs='?', help="URI of the output stream")
-#parser.add_argument("--network", type=str, default="googlenet", help="model to use, can be:  googlenet, resnet-18, ect. (see --help for others)")
 
 try:
 	args = parser.parse_known_args()[0]
@@ -74,7 +73,7 @@ while True:
                     "squirrels, fish",
                     "fruits, bugs, fish"]
 
-    advice_label = ""
+    advice_label = "something went wrong"
 
     for index in range(len(class_list)-1):
         class_name = class_list[index]
@@ -88,10 +87,9 @@ while True:
                      color=class_font.White, background=class_font.Gray40)
 
     # draw advice label
-    if advice_label != "":
-        advice_font.OverlayText(img, text=str(advice_label), 
-                         x=5, y=35,
-                         color=advice_font.White, background=advice_font.Gray40)
+    advice_font.OverlayText(img, text=str(advice_label), 
+                     x=5, y=35,
+                     color=advice_font.White, background=advice_font.Gray40)
 
     # render the image
     output.Render(img)
@@ -100,7 +98,7 @@ while True:
     output.SetStatus("{:s} | Network {:.0f} FPS".format(net.GetNetworkName(), net.GetNetworkFPS()))
 
     # print out performance info
-    #net.PrintProfilerTimes()
+    net.PrintProfilerTimes()
 
     # exit on input/output EOS
     if not input.IsStreaming() or not output.IsStreaming():
