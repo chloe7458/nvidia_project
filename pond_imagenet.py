@@ -4,6 +4,8 @@ from jetson_inference import imageNet
 from jetson_utils import videoSource, videoOutput, cudaFont, Log
 
 import sys
+import os
+
 import argparse
 
 
@@ -32,6 +34,13 @@ input = videoSource(args.input, argv=sys.argv)
 output = videoOutput(args.output, argv=sys.argv)
 
 
+# delete previous outputs
+dir = "/home/nvidia/pond/output"
+for file_path in os.listdir(dir):
+    print("removed previous output",str(file_path))
+    os.remove(os.path.join(dir,file_path))
+
+
 # create fonts for overlay
 class_font = cudaFont(size=30)
 advice_font = cudaFont(size=15)
@@ -57,21 +66,21 @@ while True:
 
     # give advice
     class_list = ["beaver","duck","fish","frog","goose","heron","turtle"]
-    advice_list = ["carrots, lettuce, other vegetables",
+    advice_list = ["vegetables",
                     "corn, oats, rice, seeds",
-                    "algae, plants, worms and insects, fish",
+                    "algae, plants, bugs, fish",
                     "worms and insects",
-                    "grass, seeds, grain, fruits"
+                    "grass, seeds, grain, fruits",
                     "squirrels, fish",
-                    "fruits, worms and insects, fish"]
+                    "fruits, bugs, fish"]
+
+    advice_label = ""
 
     for index in range(len(class_list)-1):
         class_name = class_list[index]
 
-        if class_label == class_name:
+        if class_desc == class_name:
             advice_label = advice_list[index]
-        else:
-            advice_label = ""
     
     # draw top class label
     class_font.OverlayText(img, text=f"{confidence:05.2f}% {class_label}", 
@@ -80,7 +89,7 @@ while True:
 
     # draw advice label
     if advice_label != "":
-        advice_font.OverlayText(img, text=str(advice), 
+        advice_font.OverlayText(img, text=str(advice_label), 
                          x=5, y=35,
                          color=advice_font.White, background=advice_font.Gray40)
 
