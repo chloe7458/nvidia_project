@@ -4,20 +4,24 @@ Do you like throwing bread at ducks? Well stop it.
 
 TL;DR: Multiple studies (lost the sources lol oops) show that bread is NOT HEALTHY for ducks. So don't throw bread at ducks. If you are hanging out at your local pond or whatever environment happens to have beavers or ducks or fish or frogs or herons or geese or turtles, you can now upload a picture of an animal listed above to see what it eats. Apparently you're not supposed to feed wild animals at all so this is still technically good for information. Even if it's only 7 pieces of information. If I wasn't so incompetent as to try to make my own miserable dataset rather than searching a little better online then I probably could have done a lot more categories. Too bad
 
-image canceled
+image: duck giving a thumb up
 
 ## The Algorithm
 
-Add an explanation of the algorithm and how it works. Make sure to include details about how the code works, what it depends on, and any other relevant info. Add images or other descriptions for your project here. i do this later when i am not too lazy to walk over and plug in the nano (i am currently too lazy to walk over and plug in the nano) (it's 2 hours before the final class why am i still trying to make 1998 toontown dance mix in thirty dollar website) (do i even have priorities) (probably not) (technical issues kinda discouraging tbh) (rahhhhh turns out it was actually line 196 oops)
+This project uses a resnet-18 model that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with text boxes that show the animal name and the diet of that animal.
 
 ## Running this project
 
-1. jetson nano
+1. make sure you install things on the jetson nano i don't actually know what this was meant to be let me just check every canvas module ever real quick
 2. go to jetson-inference/python/training/classification/data/
 3. download data into training/classification/data/
-4. train the model probably (add docker steps too apparently) and export most likely
-5. cd .. a bunch of times and go to home/nvidia/pond/ for lack of a logical name
-6. iforgotthefilename.py {image file path} {file path for output}
-7. ignore how the model has 23% accuracy because i spent 3 hours trying to resume training and it did Not
+4. go to jetson-inference
+5. ./docker/run.sh into jetson-inference/python/training/classification
+6. train.py parameter parameter parameter
+7. export onnx i forgot what the script was called and my ssh is not working so i can not see
+8. i actually don't know how to exit docker normally so either do it if you know how or be like me and open a new terminal to get out of docker
+9. go to home/nvidia/pond/ for lack of a better or more logical name
+10. python3 pond_imagenet.py {image file path} {file path for output}
+11. ignore how the model has like 30% accuracy 
 
 [View a video explanation here UNFORTUNATELY i do not have one currently haha](video link)
