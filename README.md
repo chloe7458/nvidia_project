@@ -13,15 +13,16 @@ This project uses a resnet-18 model that is retrained to focus on different type
 ## Running this project
 
 1. make sure you install things on the jetson nano i don't actually know what this was meant to be let me just check every canvas module ever real quick
-2. go to jetson-inference/python/training/classification/data/
+2. go to home/nvidia/jetson-inference/python/training/classification/data/ in terminal
 3. download data into training/classification/data/
-4. go to jetson-inference
+4. go to home/nvidia/jetson-inference in terminal
 5. ./docker/run.sh into jetson-inference/python/training/classification
 6. train.py parameter parameter parameter
 7. export onnx i forgot what the script was called and my ssh is not working so i can not see
 8. type exit to exit the docker i guess
-9. go to home/nvidia/pond/ for lack of a better or more logical name
+9. go to home/nvidia/pond/ in terminal for lack of a better or more logical name
 10. python3 pond_imagenet.py {image file path} {file path for output}
-11. ignore how the model has like 30% accuracy 
+11. ignore how the model has like 30% accuracy
+12. go to home/nvidia/pond/output/ in vscode (look at the file list) and open new files to SEE
 
 [View a video explanation here UNFORTUNATELY i do not have one currently haha](video link)
