@@ -9,9 +9,9 @@ import argparse
 
 # parse the command line
 parser = argparse.ArgumentParser()
-parser.add_argument("--input", type=str, default="", nargs='?', help="URI of the input stream")
-parser.add_argument("--output", type=str, default="", nargs='?', help="URI of the output stream")
-parser.add_argument("--network", type=str, default="googlenet", help="model to use, can be:  googlenet, resnet-18, ect. (see --help for others)")
+parser.add_argument("input", type=str, default="", nargs='?', help="URI of the input stream")
+parser.add_argument("output", type=str, default="", nargs='?', help="URI of the output stream")
+#parser.add_argument("--network", type=str, default="googlenet", help="model to use, can be:  googlenet, resnet-18, ect. (see --help for others)")
 
 try:
 	args = parser.parse_known_args()[0]
@@ -22,7 +22,9 @@ except:
 
 
 # load the recognition network
-net = imageNet(args.network, sys.argv)
+net = imageNet(model="/home/nvidia/jetson-inference/python/training/classification/models/pond/resnet18.onnx",
+                 labels="/home/nvidia/jetson-inference/python/training/classification/models/pond/labels.txt", 
+                 input_blob="input_0", output_blob="output_0")
 
 
 # create video sources and outputs
@@ -40,8 +42,8 @@ while True:
     # capture the next image
     img = input.Capture()
     
-    if img is None: # timeout
-        continue  
+    if img == None: # timeout
+        continue
         
     # classify the image and get the top class information
     class_id, confidence = net.Classify(img)
