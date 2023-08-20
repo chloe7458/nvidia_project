@@ -2,9 +2,7 @@
 
 Do you like throwing bread at ducks? Well stop it.
 
-TL;DR: Multiple studies (lost the sources lol oops) show that bread is NOT HEALTHY for ducks. So don't throw bread at ducks. If you are hanging out at your local pond or whatever environment happens to have beavers or ducks or fish or frogs or herons or geese or turtles, you can now upload a picture of an animal listed above to see what it eats. Apparently you're not supposed to feed wild animals at all so this is still technically good for information. Even if it's only 7 pieces of information. If I wasn't so incompetent as to try to make my own miserable dataset rather than searching a little better online then I probably could have done a lot more categories. Too bad
-
-image: duck giving a thumb up
+TL;DR: Multiple studies (lost the sources lol oops) show that bread is NOT HEALTHY for ducks. So don't throw bread at ducks. If you are hanging out at your local pond or whatever environment happens to have beavers or ducks or fish or frogs or herons or geese or turtles, you can now upload a picture of an animal listed above to see what it eats. Apparently you're not supposed to feed wild animals at all so this is technically only good for getting information. Even if it's only 7 pieces of information. If I wasn't so incompetent as to try to make my own miserable dataset rather than searching a little better online then I probably could have done a lot more categories. Too bad
 
 ## The Algorithm
 
@@ -72,7 +70,7 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 2. Connect to your jetson nano on VSCode.
 
    <details>
-      <summary>Instructions</summary>
+      <summary>SSH on VSCode</summary>
       
       1. Open VSCode and navigate to the Extensions tab.
 
