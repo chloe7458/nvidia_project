@@ -6,7 +6,8 @@ TL;DR: Multiple studies (lost the sources lol oops) show that bread is NOT HEALT
 
 image: duck giving a thumb up
 
-### The Algorithm
+## The Algorithm
+
 This project uses a resnet-18 network that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with labels that show the animal's name and what the animal eats.
 
 <details>
@@ -74,24 +75,38 @@ This project uses a resnet-18 network that is retrained to focus on different ty
       <summary>Instructions</summary>
       
       1. Open VSCode and navigate to the Extensions tab.
+
+         ![](https://i.ibb.co/hXR7yjK/Capture2bi.png)
       
       2. Install the Remote-SSH extension.
+  
+         ![](https://i.ibb.co/YfyYgnB/Capture2bii.png)
       
       3. Navigate to the Command Palette. (View > Command Palette or Ctrl + Shift + P)
+
+         ![](https://i.ibb.co/8DFzD9h/Capture2biii.png)
       
       4. Select "Remote-SSH: Connect to Host..."
+         
+         ![](https://i.ibb.co/bbk0q3X/Capture2biv.png)
       
-      5. Select "Add New SSH Host..."
+      7. Select "Add New SSH Host..."
+       
+         ![](https://i.ibb.co/n8yrD6C/Capture2bv.png)
       
-      6. Type "nvidia@" followed by your jetson nano's IP address.
+      9. Type "nvidia@" followed by your jetson nano's IP address.
+  
+          ![](https://i.ibb.co/MSbVchx/Capture2bvi.png)
       
-      7. Select the first option.
+      11. Select the first option.
+  
+          
       
-      8. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
+      13. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
       
-      9. Enter the password.
+      14. Enter the password.
       
-      10. Select "Open Folder..." and enter "/home/".
+      15. Select "Open Folder..." and enter "/home/".
    
    </details>
 
@@ -125,26 +140,26 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 
 10. Press ```Ctrl+C``` at any time to pause training.
 
-   <details>
-      <summary>Resuming training</summary>
+    <details>
+       <summary>Resuming training</summary>
       
-      1. To resume training, run ```train.py``` with these parameters:
+       1. To resume training, run ```train.py``` with these parameters:
          
-         ```
-         # python3 train.py --resume models/pond/model_best.pth.tar --model-dir=models/pond data/pond
-         ```
-      
-      2. If you get a silly error on line 196 about the best_accuracy variable, open ```train.py``` using this command.
-         
-         ```
-         # nano train.py
-         ```
+          ```
+          # python3 train.py --resume models/pond/model_best.pth.tar --model-dir=models/pond data/pond
+          ```
+       
+       2. If you get a silly error on line 196 about the best_accuracy variable, open ```train.py``` using this command.
+          
+          ```
+          # nano train.py
+          ``` 
 
-         Look for these lines and comment them out, then save the file.
+          Look for these lines and comment them out, then save the file.
          
-         Try running the file again and it should work.
-         
-   </details>
+          Try running the file again and it should work.
+
+    </details>
 
 11. Export the re-trained model using this command.
 
