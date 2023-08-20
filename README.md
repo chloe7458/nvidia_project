@@ -90,23 +90,29 @@ This project uses a resnet-18 network that is retrained to focus on different ty
          
          ![](https://i.ibb.co/bbk0q3X/Capture2biv.png)
       
-      7. Select "Add New SSH Host..."
+      5. Select "Add New SSH Host..."
        
          ![](https://i.ibb.co/n8yrD6C/Capture2bv.png)
       
-      9. Type "nvidia@" followed by your jetson nano's IP address.
+      6. Type "nvidia@" followed by your jetson nano's IP address.
   
           ![](https://i.ibb.co/MSbVchx/Capture2bvi.png)
       
-      11. Select the first option.
+      7. Select the first option.
   
+          ![](https://i.ibb.co/FBCFFqC/Capture2bvii.png)
+      
+      8. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
+  
+          ![](https://i.ibb.co/1X4P03v/tempsnip.png)
+      
+      9. Enter the password.
+  
+          ![](https://i.ibb.co/pv2t2xg/Capture2bxi.png)
           
-      
-      13. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
-      
-      14. Enter the password.
-      
-      15. Select "Open Folder..." and enter "/home/".
+      10. Select "Open Folder..." and enter "/home/".
+
+          ![](https://i.ibb.co/4jXmZ5b/Capture2bxii.png)
    
    </details>
 
@@ -120,25 +126,25 @@ This project uses a resnet-18 network that is retrained to focus on different ty
    $ cd nvidia/jetson-inference/
    ```
    
-7. Open the docker container and enter the password.
+6. Open the docker container and enter the password.
 
    ```
    $ ./docker/run.sh
    ```
 
-8. Navigate to **/jetson-inference/python/training/classification/** in the docker container.
+7. Navigate to **/jetson-inference/python/training/classification/** in the docker container.
 
    ```
    # cd python/training/classification/
    ```
 
-9. Re-train the network using the data for this project.
+8. Re-train the network using the data for this project.
 
    ```
    # python3 train.py --model-dir=models/pond/ data/pond/
    ```
 
-10. Press ```Ctrl+C``` at any time to pause training.
+9. Press ```Ctrl+C``` at any time to pause training.
 
     <details>
        <summary>Resuming training</summary>
@@ -161,7 +167,7 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 
     </details>
 
-11. Export the re-trained model using this command.
+10. Export the re-trained model using this command.
 
     ```
     # python3 onnx_export.py --model-dir=models/pond
@@ -169,20 +175,20 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 
     You should see the ONNX file in the explorer.
   
-12. When you are satisfied with the training, pause again and exit the docker container.
+11. When you are satisfied with the training, pause again and exit the docker container.
 
     ```
     # exit
     ```
     
-13. You should be back at **/home/nvidia/jetson-inference/**. Navigate to **/home/nvidia/pond/**.
+12. You should be back at **/home/nvidia/jetson-inference/**. Navigate to **/home/nvidia/pond/**.
 
     ```
     $ cd ..
     $ cd pond/
     ```
     
-14. To use the model, run ```pond_imagenet.py```.
+13. To use the model, run ```pond_imagenet.py```.
     This command will make the model process all of the beaver images in the dataset for this project and saves the outputs to **/home/nvidia/pond/output/**.
 
     ```
@@ -193,6 +199,6 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 
     also ignore how the model has like 30% accuracy
 
-17. Open the output files in VSCode to see the results.
+14. Open the output files in VSCode to see the results.
     
 [View a video explanation here UNFORTUNATELY i do not have one currently haha](video link)
