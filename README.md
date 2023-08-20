@@ -8,11 +8,14 @@ image: duck giving a thumb up
 
 ## The Algorithm
 
-This project uses a resnet-18 model that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with text boxes that show the animal name and the diet of that animal.
+This project uses a resnet-18 network that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with labels that show the animal's name and what the animal eats.
+
+1. Import the necessary modules. test
+   [from jetson_inference import imageNet/ from jetson_utils import videoSource, videoOutput, cudaFont, Log/ import sys/ import os/ import argparse](https://ibb.co/J7Fjz3j)
 
 ## Running this project
 
-1. make sure you install things on the jetson nano i don't actually know what this was meant to be let me just check every canvas module ever real quick
+1. Make sure the following are installed on your jetson: [resnet-18](), [jetson-inference](https://www.github.com/dusty-nv/jetson-inference/)
 2. go to home/nvidia/jetson-inference/python/training/classification/data/ in terminal
 3. download data into training/classification/data/
 4. go to home/nvidia/jetson-inference in terminal
