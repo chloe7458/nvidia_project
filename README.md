@@ -6,11 +6,14 @@ TL;DR: Multiple studies (lost the sources lol oops) show that bread is NOT HEALT
 
 image: duck giving a thumb up
 
-<details>
-<summary>The Algorithm</summary>
-
+### The Algorithm
 This project uses a resnet-18 network that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with labels that show the animal's name and what the animal eats.
 
+<details>
+<summary>
+   pond_imagenet.py
+</summary>
+   
 1. Import the necessary modules.
    ![](https://i.ibb.co/hW1FKYF/Capture1.png)
    
