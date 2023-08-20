@@ -11,7 +11,7 @@ image: duck giving a thumb up
 This project uses a resnet-18 network that is retrained to focus on different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with labels that show the animal's name and what the animal eats.
 
 1. Import the necessary modules. test
-   [from jetson_inference import imageNet/ from jetson_utils import videoSource, videoOutput, cudaFont, Log/ import sys/ import os/ import argparse](https://i.ibb.co/hW1FKYF/Capture1.png)
+   [](https://ibb.co/J7Fjz3j)
 
 ## Running this project
 
