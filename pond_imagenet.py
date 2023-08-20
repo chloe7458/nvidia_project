@@ -22,15 +22,15 @@ except:
 	sys.exit(0)
 
 
+# create video sources and outputs
+input = videoSource(args.input, argv=sys.argv)
+output = videoOutput(args.output, argv=sys.argv)
+
+
 # load the recognition network
 net = imageNet(model="/home/nvidia/jetson-inference/python/training/classification/models/pond/resnet18.onnx",
                  labels="/home/nvidia/jetson-inference/python/training/classification/models/pond/labels.txt", 
                  input_blob="input_0", output_blob="output_0")
-
-
-# create video sources and outputs
-input = videoSource(args.input, argv=sys.argv)
-output = videoOutput(args.output, argv=sys.argv)
 
 
 # delete previous outputs
@@ -42,7 +42,7 @@ for file_path in os.listdir(dir):
 
 # create fonts for overlay
 class_font = cudaFont(size=30)
-advice_font = cudaFont(size=15)
+info_font = cudaFont(size=15)
 
 
 # process frames until EOS or the user exits
@@ -63,9 +63,9 @@ while True:
     # print top class prediction
     print("image is recognized as '{:s}' (class #{:d}) with {:f}% confidence".format(class_desc, class_id, confidence))
 
-    # give advice
+    # give diet info
     class_list = ["beaver","duck","fish","frog","goose","heron","turtle"]
-    advice_list = ["vegetables",
+    info_list = ["vegetables",
                     "corn, oats, rice, seeds",
                     "algae, plants, bugs, fish",
                     "worms and insects",
@@ -73,23 +73,22 @@ while True:
                     "squirrels, fish",
                     "fruits, bugs, fish"]
 
-    advice_label = "something went wrong"
+    info_label = "something went wrong"
 
     for index in range(len(class_list)-1):
         class_name = class_list[index]
 
         if class_desc == class_name:
-            advice_label = advice_list[index]
+            info_label = info_list[index]
     
     # draw top class label
     class_font.OverlayText(img, text=f"{confidence:05.2f}% {class_label}", 
                      x=5, y=5,
                      color=class_font.White, background=class_font.Gray40)
 
-    # draw advice label
-    advice_font.OverlayText(img, text=str(advice_label), 
+    info_font.OverlayText(img, text=info_label, 
                      x=5, y=35,
-                     color=advice_font.White, background=advice_font.Gray40)
+                     color=info_font.White, background=info_font.Gray40)
 
     # render the image
     output.Render(img)
