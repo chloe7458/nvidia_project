@@ -118,6 +118,10 @@ This project uses a resnet-18 network that is retrained to focus on different ty
 
 4. Download the models folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/models/pond/**.
 
+   Overall, the classification folder should look like this:
+
+   ![](https://i.ibb.co/stJgXr1/Capturenewnewnew-one.png)
+
 5. Open the terminal and navigate to **/home/nvidia/jetson-inference/**.
 
    ```
@@ -194,8 +198,6 @@ This project uses a resnet-18 network that is retrained to focus on different ty
     ```
 
     To process your own images, upload them to VSCode and change the file paths in the command.
-
-    also ignore how the model has like 30% accuracy
 
 14. Open the output files in VSCode to see the results.
     
