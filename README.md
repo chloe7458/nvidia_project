@@ -114,9 +114,9 @@ This project uses a resnet-18 network that is retrained to focus on different ty
    
    </details>
 
-3. Download the data folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/data/**.
+3. Download the [data](https://github.com/chloe7458/nvidia_project/tree/master/data) folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/data/**.
 
-4. Download the models folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/models/pond/**.
+4. Download the [models](https://github.com/chloe7458/nvidia_project/tree/master/models) folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/models/pond/**.
 
    Overall, the classification folder should look like this:
 
