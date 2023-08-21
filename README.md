@@ -68,81 +68,89 @@ This project uses a resnet-18 network that is retrained to focus on recognizing 
    <details>
       <summary>SSH on VSCode</summary>
       
-      1. Open VSCode and navigate to the Extensions tab.
+   1. Open VSCode and navigate to the Extensions tab.
 
          ![](https://i.ibb.co/hXR7yjK/Capture2bi.png)
       
-      2. Install the Remote-SSH extension.
+   2. Install the Remote-SSH extension.
   
          ![](https://i.ibb.co/YfyYgnB/Capture2bii.png)
       
-      3. Navigate to the Command Palette. (View > Command Palette or Ctrl + Shift + P)
+   3. Navigate to the Command Palette. (View > Command Palette or Ctrl + Shift + P)
 
          ![](https://i.ibb.co/8DFzD9h/Capture2biii.png)
       
-      4. Select "Remote-SSH: Connect to Host..."
+   4. Select "Remote-SSH: Connect to Host..."
          
          ![](https://i.ibb.co/bbk0q3X/Capture2biv.png)
       
-      5. Select "Add New SSH Host..."
+   5. Select "Add New SSH Host..."
        
          ![](https://i.ibb.co/n8yrD6C/Capture2bv.png)
       
-      6. Type "nvidia@" followed by your jetson nano's IP address.
+   6. Type "nvidia@" followed by your jetson nano's IP address.
   
-          ![](https://i.ibb.co/MSbVchx/Capture2bvi.png)
+         ![](https://i.ibb.co/MSbVchx/Capture2bvi.png)
       
-      7. Select the first option.
+   7. Select the first option.
   
-          ![](https://i.ibb.co/FBCFFqC/Capture2bvii.png)
+         ![](https://i.ibb.co/FBCFFqC/Capture2bvii.png)
       
-      8. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
+   8. Connect to your jetson nano. If asked, select Linux as the platform for the remote host.
   
-          ![](https://i.ibb.co/1X4P03v/tempsnip.png)
+         ![](https://i.ibb.co/1X4P03v/tempsnip.png)
       
-      9. Enter the password.
+   9. Enter the password.
   
-          ![](https://i.ibb.co/pv2t2xg/Capture2bxi.png)
+         ![](https://i.ibb.co/pv2t2xg/Capture2bxi.png)
           
-      10. Select "Open Folder..." and enter "/home/".
+   10. Select "Open Folder..." and enter "/home/".
 
           ![](https://i.ibb.co/4jXmZ5b/Capture2bxii.png)
    
    </details>
 
-3. Download the [data](https://github.com/chloe7458/nvidia_project/tree/master/data) folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/data/**.
+3. Download the [```data```](https://github.com/chloe7458/nvidia_project/tree/master/data) directory to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/data/**.
 
-4. Download the [models](https://github.com/chloe7458/nvidia_project/tree/master/models) folder to your computer and move the contents into **/home/nvidia/jetson-inference/python/training/classification/models/pond/**.
+4. Create the directory **/home/nvidia/jetson-inference/python/training/classification/models/pond/** using ```mkdir``` or through the VSCode explorer.
 
-   Overall, the classification folder should look like this:
+5. Copy the [```labels.txt```](https://github.com/chloe7458/nvidia_project/blob/master/data/pond/labels.txt) file into **/home/nvidia/jetson-inference/python/training/classification/models/pond/**.
+   
+   Overall, the ```classification``` directory should look like this.
 
-   ![](https://i.ibb.co/stJgXr1/Capturenewnewnew-one.png)
+   ![](https://i.ibb.co/mCL7nfn/thing.png)
 
-5. Open the terminal and navigate to **/home/nvidia/jetson-inference/**.
+6. Open the terminal and navigate to **/home/nvidia/jetson-inference/**.
 
    ```
    $ cd nvidia/jetson-inference/
    ```
+
+   ![](https://i.ibb.co/nQgqTwQ/6.png)
    
-6. Open the docker container and enter the password.
+7. Open the docker container and enter the password.
 
    ```
    $ ./docker/run.sh
    ```
-
-7. Navigate to **/jetson-inference/python/training/classification/** in the docker container.
+   
+   ![](https://i.ibb.co/CPyswFp/7.png)
+   
+8. Navigate to **/jetson-inference/python/training/classification/** in the docker container.
 
    ```
    # cd python/training/classification/
    ```
 
-8. Re-train the network using the data for this project.
+   ![](https://i.ibb.co/YPBnG13/8.png)
+
+9. Re-train the network using the data for this project. This will take some time.
 
    ```
    # python3 train.py --model-dir=models/pond/ data/pond/
    ```
 
-9. Press ```Ctrl+C``` at any time to pause training.
+10. Press ```Ctrl+C``` at any time to pause training.
 
     <details>
        <summary>Resuming training</summary>
@@ -158,35 +166,41 @@ This project uses a resnet-18 network that is retrained to focus on recognizing 
           ```
           # nano train.py
           ``` 
-
           Look for these lines and comment them out, then save the file.
+   
+          https://github.com/chloe7458/nvidia_project/assets/55027449/093ea25c-b9a2-4649-9aae-46169428e134
          
           Try running the file again and it should work.
 
     </details>
 
-10. Export the re-trained model using this command.
+11. Export the re-trained model using this command.
 
     ```
     # python3 onnx_export.py --model-dir=models/pond
     ```
-
     You should see the ONNX file in the explorer.
+
+    ![](https://i.ibb.co/n3gVB8y/11.png)
   
-11. When you are satisfied with the training, pause again and exit the docker container.
+12. When you are satisfied with the training, pause again and exit the docker container.
 
     ```
     # exit
     ```
+
+    ![](https://i.ibb.co/KV7rfM2/12.png)
     
-12. You should be back at **/home/nvidia/jetson-inference/**. Navigate to **/home/nvidia/pond/**.
+13. You should be back at **/home/nvidia/jetson-inference/**. Navigate to **/home/nvidia/pond/**.
 
     ```
     $ cd ..
     $ cd pond/
     ```
+
+    ![](https://i.ibb.co/vHQgR5D/13.png)
     
-13. To use the model, run ```pond_imagenet.py```.
+14. To use the model, run ```pond_imagenet.py```.
     This command will make the model process all of the beaver images in the dataset for this project and saves the outputs to **/home/nvidia/pond/output/**.
 
     ```
@@ -195,6 +209,10 @@ This project uses a resnet-18 network that is retrained to focus on recognizing 
 
     To process your own images, upload them to VSCode and change the file paths in the command.
 
-14. Open the output files in VSCode to see the results.
-    
+15. Open the output files in VSCode to see the results.
+   
+    ![](https://i.ibb.co/m8LW6vK/example.png)
+
+## Video Demonstration
+
 [View a video explanation here UNFORTUNATELY i do not have one currently haha](video link)
