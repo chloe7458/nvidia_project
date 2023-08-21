@@ -1,4 +1,4 @@
-# professional project name
+# Project Name
 
 This project uses a resnet-18 network that is retrained to focus on recognizing different types of animals found near ponds: beavers, ducks, fish, frogs, herons, geese, and turtles. The model takes an image and classifies it as one of these seven animals, and then the algorithm creates a copy of the image with labels that show the animal's name and what the animal eats.
 
@@ -215,4 +215,4 @@ This project uses a resnet-18 network that is retrained to focus on recognizing 
 
 ## Video Demonstration
 
-[View a video explanation here UNFORTUNATELY i do not have one currently haha](video link)
+[link](https://youtu.be/CeckZFksqs4)
